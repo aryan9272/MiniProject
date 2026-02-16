@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Registration | OCCS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2>NEW_<span>ENTITY</span></h2>
+            <p>Register to join the coding classroom.</p>
+            <form action="#" method="POST">
+                <div class="input-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="John Doe" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Institutional Email</label>
+                    <input type="email" id="email" placeholder="user@institution.edu" required>
+                </div>
+                <div class="input-group">
+                    <label for="role">System Role</label>
+                    <select id="role" required>
+                        <option value="" disabled selected>Select Role...</option>
+                        <option value="student">Student</option>
+                        <option value="professor">Professor</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-neon full-width">Establish Link</button>
+            </form>
+            <p class="auth-footer">Already integrated? <a href="login.html">Access terminal</a></p>
+        </div>
+    </div>
+</body>
+</html>
