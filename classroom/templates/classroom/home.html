@@ -1,0 +1,55 @@
+{% extends 'classroom/base.html' %}
+{% block title %}CodeClass — Student Coding Classroom{% endblock %}
+
+{% block content %}
+<div class="cc-hero">
+  <div class="container text-center">
+    <div class="cc-hero-badge mb-3">
+      <i class="bi bi-lightning-charge-fill"></i> Live Code. Learn Together.
+    </div>
+    <h1 class="cc-hero-title">
+      Your Classroom,<br>
+      <span class="cc-highlight">Code Ready.</span>
+    </h1>
+    <p class="cc-hero-sub">
+      Professors post weekly challenges. Students write, run, and submit code —
+      all in one place, no extra tools needed.
+    </p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap mt-4">
+      <a href="{% url 'account_login' %}" class="btn cc-btn-primary btn-lg px-5">
+        <i class="bi bi-google me-2"></i>Sign in with Google
+      </a>
+      <a href="{% url 'account_signup' %}" class="btn cc-btn-outline btn-lg px-5">
+        Create Account
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="container py-5">
+  <div class="row g-4 justify-content-center">
+    <div class="col-md-4">
+      <div class="cc-feature-card">
+        <div class="cc-feature-icon"><i class="bi bi-terminal-fill"></i></div>
+        <h5>Built-in IDE</h5>
+        <p>Write and run Python, JS, C, C++, Java — terminal output shown instantly. No sign-ups, no installs.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="cc-feature-card">
+        <div class="cc-feature-icon"><i class="bi bi-calendar-check-fill"></i></div>
+        <h5>Weekly Challenges</h5>
+        <p>Professors post questions with due dates. Students see what's pending and submit before the clock runs out.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="cc-feature-card">
+        <div class="cc-feature-icon"><i class="bi bi-bar-chart-line-fill"></i></div>
+        <h5>Submission Stats</h5>
+        <p>Professors see beautiful charts — who submitted on time, who was late, who hasn't started yet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'classroom/base.html' %}
+{% block title %}Setup Profile — CodeClass{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="cc-card text-center p-5">
+        <div class="cc-feature-icon mb-3"><i class="bi bi-person-badge-fill"></i></div>
+        <h3 class="mb-1">Welcome, {{ user.email }}!</h3>
+        <p class="text-muted mb-4">Tell us who you are to get started.</p>
+
+        <form method="POST">
+          {% csrf_token %}
+          <div class="d-flex gap-3 justify-content-center mb-4">
+            <label class="cc-role-card {% if form.role.value == 'professor' %}active{% endif %}" for="id_role_0">
+              <input type="radio" name="role" value="professor" id="id_role_0"
+                     {% if form.role.value == 'professor' %}checked{% endif %}
+                     class="d-none"/>
+              <i class="bi bi-mortarboard-fill fs-2 d-block mb-2"></i>
+              <strong>Professor</strong>
+              <small class="d-block text-muted">Create classrooms &amp; post questions</small>
+            </label>
+            <label class="cc-role-card {% if form.role.value == 'student' %}active{% endif %}" for="id_role_1">
+              <input type="radio" name="role" value="student" id="id_role_1"
+                     {% if form.role.value == 'student' %}checked{% endif %}
+                     class="d-none"/>
+              <i class="bi bi-person-fill fs-2 d-block mb-2"></i>
+              <strong>Student</strong>
+              <small class="d-block text-muted">Join classrooms &amp; solve questions</small>
+            </label>
+          </div>
+          <button type="submit" class="btn cc-btn-primary px-5">Continue →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Highlight selected role card
+document.querySelectorAll('.cc-role-card input').forEach(input => {
+  input.addEventListener('change', () => {
+    document.querySelectorAll('.cc-role-card').forEach(c => c.classList.remove('active'));
+    input.closest('.cc-role-card').classList.add('active');
+  });
+});
+</script>
+{% endblock %}

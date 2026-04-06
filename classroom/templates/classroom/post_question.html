@@ -1,0 +1,35 @@
+{% extends 'classroom/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Post Question — CodeClass{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="mb-3">
+        <a href="{% url 'classroom_detail' classroom.pk %}" class="cc-back-link">
+          <i class="bi bi-arrow-left me-1"></i>Back to {{ classroom.name }}
+        </a>
+      </div>
+
+      <div class="cc-card p-4 p-md-5">
+        <h3 class="fw-bold mb-1">
+          <i class="bi bi-plus-square-fill me-2"></i>Post New Question
+        </h3>
+        <p class="text-muted mb-4">Classroom: <strong>{{ classroom.name }}</strong></p>
+
+        <form method="POST">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <div class="d-flex gap-2 mt-4">
+            <button type="submit" class="btn cc-btn-primary px-4">
+              <i class="bi bi-send-fill me-2"></i>Post Question
+            </button>
+            <a href="{% url 'classroom_detail' classroom.pk %}" class="btn cc-btn-outline px-4">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

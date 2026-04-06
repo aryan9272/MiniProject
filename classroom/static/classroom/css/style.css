@@ -1,0 +1,455 @@
+/* ══════════════════════════════════════════════════════════════
+   CodeClass — Main Stylesheet
+   Font: Sora (UI) + JetBrains Mono (code)
+   Theme: Dark navy base, electric teal accent
+══════════════════════════════════════════════════════════════ */
+
+:root {
+  --bg:        #0f0f1a;
+  --bg2:       #181826;
+  --bg3:       #22223a;
+  --border:    #2e2e4a;
+  --text:      #e2e2f0;
+  --muted:     #8888aa;
+  --accent:    #00e5c0;
+  --accent2:   #7c6cff;
+  --danger:    #ff4d6d;
+  --warn:      #ffb347;
+  --success:   #22c55e;
+  --radius:    12px;
+}
+
+/* ── BASE ──────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: #fff; }
+
+code, pre, .cc-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── NAVBAR ────────────────────────────────────────────────────── */
+.cc-navbar {
+  background: rgba(15,15,26,.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.cc-brand {
+  color: var(--accent) !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: -0.5px;
+}
+
+.cc-brand i { margin-right: 6px; }
+
+.cc-navbar .nav-link {
+  color: var(--muted) !important;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all .2s;
+}
+
+.cc-navbar .nav-link:hover {
+  color: var(--text) !important;
+  background: var(--bg3);
+}
+
+.cc-avatar-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cc-avatar-circle {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cc-avatar-circle.sm { width: 26px; height: 26px; font-size: 11px; }
+
+/* ── MAIN / FOOTER ─────────────────────────────────────────────── */
+.cc-main { flex: 1; }
+
+.cc-footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ── BUTTONS ───────────────────────────────────────────────────── */
+.cc-btn-primary {
+  background: var(--accent);
+  color: #0f0f1a !important;
+  border: none;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all .2s;
+}
+
+.cc-btn-primary:hover {
+  background: #00ffd5;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0,229,192,.3);
+}
+
+.cc-btn-outline {
+  background: transparent;
+  color: var(--accent) !important;
+  border: 1.5px solid var(--accent);
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all .2s;
+}
+
+.cc-btn-outline:hover {
+  background: var(--accent);
+  color: #0f0f1a !important;
+}
+
+/* ── CARDS ─────────────────────────────────────────────────────── */
+.cc-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* ── HERO ──────────────────────────────────────────────────────── */
+.cc-hero {
+  padding: 100px 20px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cc-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,229,192,.08) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(124,108,255,.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.cc-hero-badge {
+  display: inline-block;
+  background: rgba(0,229,192,.12);
+  border: 1px solid rgba(0,229,192,.3);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 999px;
+  letter-spacing: .5px;
+}
+
+.cc-hero-title {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-top: 16px;
+  letter-spacing: -1px;
+}
+
+.cc-highlight {
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cc-hero-sub {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 540px;
+  margin: 16px auto 0;
+  line-height: 1.7;
+}
+
+/* ── FEATURE CARDS ─────────────────────────────────────────────── */
+.cc-feature-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  transition: border-color .25s, transform .25s;
+}
+
+.cc-feature-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.cc-feature-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  background: rgba(0,229,192,.12);
+  color: var(--accent);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+/* ── CLASSROOM CARDS ───────────────────────────────────────────── */
+.cc-classroom-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color .2s, transform .2s;
+}
+
+.cc-classroom-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.cc-classroom-header {
+  background: linear-gradient(135deg, var(--bg3), #2a2a4a);
+  padding: 16px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.cc-classroom-hero {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+/* ── JOIN BADGE ────────────────────────────────────────────────── */
+.cc-join-badge {
+  background: rgba(0,229,192,.15);
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(0,229,192,.3);
+  letter-spacing: 2px;
+}
+
+/* ── QUESTION CARDS ────────────────────────────────────────────── */
+.cc-question-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  transition: border-color .2s;
+}
+
+.cc-question-card:hover { border-color: var(--accent); }
+.cc-question-card.past-due { border-left: 3px solid var(--danger); }
+
+/* ── BADGES ────────────────────────────────────────────────────── */
+.cc-badge {
+  background: var(--bg3);
+  color: var(--muted);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.cc-lang-badge {
+  background: rgba(124,108,255,.15);
+  color: #a78bfa;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 2px 8px;
+  border-radius: 5px;
+  border: 1px solid rgba(124,108,255,.3);
+}
+
+.cc-status-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  display: inline-block;
+}
+.cc-status-badge.open {
+  background: rgba(34,197,94,.12);
+  color: var(--success);
+  border: 1px solid rgba(34,197,94,.3);
+}
+.cc-status-badge.due {
+  background: rgba(255,77,109,.12);
+  color: var(--danger);
+  border: 1px solid rgba(255,77,109,.3);
+}
+
+/* ── ROLE CARDS (profile setup) ────────────────────────────────── */
+.cc-role-card {
+  flex: 1;
+  background: var(--bg3);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 16px;
+  cursor: pointer;
+  transition: all .2s;
+  color: var(--text);
+  max-width: 200px;
+}
+
+.cc-role-card:hover,
+.cc-role-card.active {
+  border-color: var(--accent);
+  background: rgba(0,229,192,.08);
+  color: var(--accent);
+}
+
+/* ── STATS BOXES ───────────────────────────────────────────────── */
+.cc-stat-box {
+  background: var(--bg3);
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 14px 8px;
+}
+
+.cc-stat-num {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1;
+}
+
+.cc-stat-label {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+/* ── SUBMISSION ROW ────────────────────────────────────────────── */
+.cc-submission-row {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  transition: border-color .2s;
+}
+.cc-submission-row:hover { border-color: var(--accent); }
+
+.cc-submission-row details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.cc-submission-row details > summary::-webkit-details-marker { display: none; }
+
+/* ── STDIN TEXTAREA ────────────────────────────────────────────── */
+.cc-stdin {
+  background: #0d0d1a;
+  color: #a6e22e;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  resize: vertical;
+}
+.cc-stdin:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0,229,192,.15);
+}
+
+/* ── PROBLEM BODY ──────────────────────────────────────────────── */
+.cc-problem-body {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* ── BACK LINK ─────────────────────────────────────────────────── */
+.cc-back-link {
+  color: var(--muted);
+  font-size: 14px;
+  transition: color .15s;
+}
+.cc-back-link:hover { color: var(--accent); }
+
+/* ── EMPTY STATE ───────────────────────────────────────────────── */
+.cc-empty {
+  color: var(--muted);
+}
+
+/* ── FORMS ─────────────────────────────────────────────────────── */
+.form-control, .form-select {
+  background: var(--bg3) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: 8px !important;
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(0,229,192,.15) !important;
+}
+.form-control::placeholder { color: var(--muted) !important; }
+
+label { color: var(--text) !important; font-size: 14px; font-weight: 500; }
+
+/* ── ALERTS ────────────────────────────────────────────────────── */
+.alert { border-radius: 10px; border: none; font-size: 14px; }
+.alert-success { background: rgba(34,197,94,.12); color: #86efac; }
+.alert-danger  { background: rgba(255,77,109,.12); color: #fca5a5; }
+.alert-info    { background: rgba(0,229,192,.10);  color: var(--accent); }
+.alert-warning { background: rgba(255,179,71,.12); color: #fcd34d; }
+
+/* ── DROPDOWN ──────────────────────────────────────────────────── */
+.dropdown-menu {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.4);
+}
+.dropdown-item { color: var(--text); font-size: 14px; }
+.dropdown-item:hover { background: var(--bg3); color: var(--accent); }
+
+/* ── SCROLLBAR ─────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* ── RESPONSIVE ────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .cc-hero { padding: 60px 16px 50px; }
+  .cc-hero-title { font-size: 2rem; }
+}

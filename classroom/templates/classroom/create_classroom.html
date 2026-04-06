@@ -1,0 +1,30 @@
+{% extends 'classroom/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}{% if edit %}Edit{% else %}Create{% endif %} Classroom — CodeClass{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-7">
+      <div class="cc-card p-4 p-md-5">
+        <h3 class="fw-bold mb-1">
+          {% if edit %}<i class="bi bi-pencil-fill me-2"></i>Edit Classroom
+          {% else %}<i class="bi bi-plus-square-fill me-2"></i>Create Classroom{% endif %}
+        </h3>
+        <p class="text-muted mb-4">Fill in the details below to {% if edit %}update{% else %}set up{% endif %} your classroom.</p>
+
+        <form method="POST">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <div class="d-flex gap-2 mt-4">
+            <button type="submit" class="btn cc-btn-primary px-4">
+              {% if edit %}Save Changes{% else %}Create Classroom{% endif %}
+            </button>
+            <a href="{% url 'dashboard' %}" class="btn cc-btn-outline px-4">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

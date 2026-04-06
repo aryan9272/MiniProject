@@ -1,0 +1,47 @@
+{% extends 'classroom/base.html' %}
+{% block title %}Student Dashboard — CodeClass{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="mb-0 fw-bold">My Classrooms</h2>
+      <small class="text-muted">Student: {{ user.email }}</small>
+    </div>
+    <a href="{% url 'join_classroom' %}" class="btn cc-btn-primary">
+      <i class="bi bi-plus-lg me-1"></i> Join Classroom
+    </a>
+  </div>
+
+  {% if enrollments %}
+    <div class="row g-4">
+      {% for enrollment in enrollments %}
+      <div class="col-md-6 col-lg-4">
+        <a href="{% url 'classroom_detail' enrollment.classroom.pk %}" class="text-decoration-none">
+          <div class="cc-classroom-card h-100">
+            <div class="cc-classroom-header">
+              <span class="cc-join-badge">{{ enrollment.classroom.join_code }}</span>
+            </div>
+            <div class="p-4">
+              <h5 class="fw-semibold">{{ enrollment.classroom.name }}</h5>
+              <p class="text-muted small mb-3">{{ enrollment.classroom.description|truncatechars:80 }}</p>
+              <div class="d-flex gap-3 small text-muted">
+                <span><i class="bi bi-person-fill me-1"></i>{{ enrollment.classroom.professor.email }}</span>
+                <span><i class="bi bi-question-circle-fill me-1"></i>{{ enrollment.classroom.questions.count }} questions</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="cc-empty text-center py-5">
+      <i class="bi bi-door-open fs-1 text-muted d-block mb-3"></i>
+      <h5>You haven't joined any classroom yet</h5>
+      <p class="text-muted">Ask your professor for the 6-letter join code.</p>
+      <a href="{% url 'join_classroom' %}" class="btn cc-btn-primary mt-2">Join Classroom</a>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}
