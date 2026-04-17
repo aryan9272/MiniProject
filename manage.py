@@ -2,7 +2,8 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-
+import pymysql                    # ← ADD THIS
+pymysql.install_as_MySQLdb()     # ← ADD THIS
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'codeclassroom.settings')
     try:

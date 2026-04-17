@@ -68,7 +68,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'codeclassroom_db',       # ← your MySQL database name
         'USER': 'root',                    # ← your MySQL username
-        'PASSWORD': 'admin@1234', # ← your MySQL password
+        'PASSWORD': '#Aryan@2026', # ← your MySQL password
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
